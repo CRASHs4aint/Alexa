@@ -12,7 +12,17 @@ def speak(text):
     engine.runAndWait()
     
 def processCommand(c): 
-    pass   
+    if "open google" in c.lower():
+        webbrowser.open("https://google.com")
+    elif "open facebook" in c.lower():
+        webbrowser.open("https://facebook.com")
+    elif "open youtube" in c.lower():
+        webbrowser.open("https://youtube.com")
+    elif "open linkedin" in c.lower():
+        webbrowser.open("https://linkedin.com")
+    elif "open instagram" in c.lower():
+        webbrowser.open("https://instagram.com")            
+    
     
 if __name__== "__main__":
     speak("Initializing Alexa.......")
@@ -22,8 +32,12 @@ if __name__== "__main__":
          r = sr.Recognizer()
          
          
-         
-    print("recognizing..")
+         print("recognizing..")
+    
+    
+    
+    
+    
     
     try:
         with sr.Microphone() as source:
@@ -38,7 +52,7 @@ if __name__== "__main__":
            audio = r.listen(source)
            command = r.recognize_google(audio)
            
-           processCommand()
+           processCommand(command)
            
            
     except Exception as e:
