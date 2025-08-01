@@ -1,6 +1,7 @@
 import speech_recognition as sr
 import webbrowser
 import pyttsx3
+import musicLibrary
 
 #pip install pocketsphinx
 
@@ -21,7 +22,10 @@ def processCommand(c):
     elif "open linkedin" in c.lower():
         webbrowser.open("https://linkedin.com")
     elif "open instagram" in c.lower():
-        webbrowser.open("https://instagram.com")            
+        webbrowser.open("https://instagram.com")  
+    elif c.lower() .startswith("play"):
+         song =c.lower().split("")[1]
+         musicLibrary.music[song]       
     
     
 if __name__== "__main__":
@@ -32,12 +36,8 @@ if __name__== "__main__":
          r = sr.Recognizer()
          
          
-         print("recognizing..")
-    
-    
-    
-    
-    
+         
+    print("recognizing..")
     
     try:
         with sr.Microphone() as source:
