@@ -2,10 +2,12 @@ import speech_recognition as sr
 import webbrowser
 import pyttsx3
 import musicLibrary  # Make sure this is a custom Python file with a `music` dict or function.
+import requests
 
 # Initialize recognizer and speech engine
 recognizer = sr.Recognizer()
 engine = pyttsx3.init()
+newsapi="a8112ae33be04f2f8bf9f45acd5fbd89"
 
 def speak(text):
     engine.say(text)
@@ -23,15 +25,13 @@ def processCommand(c):
     elif "open instagram" in c.lower():
         webbrowser.open("https://instagram.com")  
     elif c.lower().startswith("play"):
-        try:
-            song = c.lower().split(" ", 1)[1]  # Get the song name after "play"
-            speak(f"Playing {song}")
-            musicLibrary.music[song]()  # Assuming music is a dict with callable song functions
-        except Exception as e:
-            speak("Sorry, I couldn't find that song.")
-            print(f"Music error: {e}")
-    else:
-        speak("Sorry, I didn't understand that command.")
+       
+            song = c.lower().split(" ")[1]  # Get the song name after "play"
+            link= musicLibrary.music[song]  # Assuming music is a dict with callable song functions
+            webbrowser.open(link)
+    elif"news" in c.lower()
+        r=requests.get("https://newsapi.org/v2/top-headlines?country=us&apiKey=a8112ae33be04f2f8bf9f45acd5fbd89")
+        
 
 if __name__ == "__main__":
     speak("Initializing Alexa.......")
