@@ -29,7 +29,7 @@ def processCommand(c):
             song = c.lower().split(" ")[1]  # Get the song name after "play"
             link= musicLibrary.music[song]  # Assuming music is a dict with callable song functions
             webbrowser.open(link)
-    elif"news" in c.lower()
+    elif"news" in c.lower():
         r=requests.get("https://newsapi.org/v2/top-headlines?country=us&apiKey=a8112ae33be04f2f8bf9f45acd5fbd89")
         
 
